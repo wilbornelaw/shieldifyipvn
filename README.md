@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# Shieldify IP Website
 
-## Getting Started
+Modern legal-tech marketing site for **Shieldify IP Co., Ltd.** built with Next.js App Router, TypeScript, TailwindCSS, shadcn/ui-style components, lucide-react icons, framer-motion, and a local MDX blog system.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js (App Router) + TypeScript
+- TailwindCSS + Typography plugin
+- shadcn/ui component structure (`components/ui` + `components.json`)
+- Radix UI primitives
+- lucide-react icons
+- framer-motion animations
+- sonner toast notifications
+- Local MDX blog: `next-mdx-remote`, `gray-matter`, `reading-time`, `remark-gfm`, `rehype-pretty-code`
+
+## Install
+
+```bash
+npm install
+```
+
+## Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+- `npm run dev` - start local dev server
+- `npm run lint` - run ESLint
+- `npm run build` - create production build
+- `npm run start` - serve production build
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+content/
+  blog/*.mdx
+app/
+  blog/page.tsx
+  blog/[slug]/page.tsx
+components/
+  blog/
+lib/
+  blog.ts
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## MDX Blog System
 
-## Deploy on Vercel
+### Add a new post
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Create a file in `content/blog` named `<slug>.mdx`.
+2. Add required frontmatter.
+3. Write markdown + optional custom MDX components.
+4. The post will appear automatically in `/blog` and `/blog/<slug>`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Required frontmatter fields
+
+```yaml
+title: "Post title"
+date: "2026-01-01"
+author: "Author name"
+tags: ["Tag1", "Tag2"]
+excerpt: "Short summary"
+coverImage: "https://images.unsplash.com/..." # optional
+```
+
+### Tags and search behavior
+
+- Blog list search is client-side and matches title + excerpt.
+- Tag filtering is client-side using frontmatter `tags`.
+- Default sorting is newest first by `date`.
+
+### Custom MDX components
+
+Available in posts:
+
+- `<Callout type="info|warning|success" title="...">...</Callout>`
+- `<Note>...</Note>`
+- `<Disclaimer>...</Disclaimer>`
+- `<EvidenceChecklist items={["Item A", "Item B"]} />`
+
+## SEO
+
+- Blog index metadata set in `app/blog/page.tsx`
+- Per-post metadata generated in `app/blog/[slug]/page.tsx`
+- OpenGraph image uses `coverImage` when present
+- Canonical URLs are set for index and post pages
+
+## Notes
+
+- All content is English only.
+- Blog content is local `.mdx` files (no DB, no external CMS).
+- Parsing is server-only in `lib/blog.ts`.
+- Posts are statically generated via `generateStaticParams`.
