@@ -1,26 +1,120 @@
-@import "tailwindcss";
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 210 33% 98%;
+  --foreground: 222 44% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 44% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 44% 12%;
+  --primary: 224 56% 24%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 215 28% 94%;
+  --secondary-foreground: 222 44% 12%;
+  --muted: 216 24% 95%;
+  --muted-foreground: 218 15% 36%;
+  --accent: 214 36% 92%;
+  --accent-foreground: 222 44% 12%;
+  --destructive: 0 72% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 215 22% 86%;
+  --input: 215 22% 84%;
+  --ring: 224 56% 28%;
+  --radius: 0.625rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  @apply border-border;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  @apply bg-background text-foreground antialiased;
+  background-image: linear-gradient(
+      180deg,
+      rgba(16, 39, 84, 0.03) 0%,
+      rgba(16, 39, 84, 0) 20%
+    ),
+    radial-gradient(circle at 100% 0%, rgba(10, 29, 66, 0.05), transparent 34%);
+  text-rendering: optimizeLegibility;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+button,
+input,
+textarea,
+label,
+li,
+div {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  @apply text-4xl font-semibold md:text-5xl;
+}
+
+h2 {
+  @apply text-3xl font-semibold;
+}
+
+h3 {
+  @apply text-xl font-semibold;
+}
+
+::selection {
+  background: rgba(14, 41, 90, 0.2);
+}
+
+.image-fade-in {
+  animation: imageFadeIn 0.5s ease-out both;
+}
+
+@keyframes imageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+[data-rehype-pretty-code-figure] {
+  margin: 1.25rem 0;
+}
+
+[data-rehype-pretty-code-figure] pre {
+  overflow-x: auto;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  padding: 0.95rem 1rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+[data-rehype-pretty-code-figure] code {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.prose h2 .anchor,
+.prose h3 .anchor {
+  margin-left: 0.35rem;
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+  color: hsl(var(--muted-foreground));
+}
+
+.prose h2:hover .anchor,
+.prose h3:hover .anchor {
+  opacity: 1;
 }

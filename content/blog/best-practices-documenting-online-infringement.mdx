@@ -1,0 +1,58 @@
+﻿---
+title: "Best Practices for Documenting Online Infringement (Screenshots, URLs, Timestamps)"
+date: "2026-01-02"
+author: "Shieldify IP Documentation Team"
+tags: ["Documentation", "Evidence", "Compliance"]
+excerpt: "Improve enforcement quality with consistent documentation standards for screenshots, URL records, and timestamps."
+coverImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80"
+---
+
+Documentation quality determines whether a report is reviewable, reproducible, and escalation-ready.
+
+## Capture complete page context
+
+A cropped screenshot without URL context is often insufficient.
+
+## Timestamp every critical artifact
+
+Use UTC timestamps in filenames and status logs to align cross-team workflows.
+
+```json
+{
+  "artifact": {
+    "url": "https://example.com/listing/123",
+    "capturedAtUtc": "2026-01-02T08:14:00Z",
+    "operator": "analyst-01",
+    "evidenceType": "listing-screenshot"
+  }
+}
+```
+
+## Keep URL registry clean
+
+### Minimum fields
+
+- URL
+- Platform
+- Violation type
+- Capture timestamp
+- Current status
+
+<Callout type="success" title="Documentation quality benchmark">
+Another reviewer should be able to verify the claim using only your stored records.
+</Callout>
+
+<Disclaimer>
+This framework supports enforcement operations and is not legal advice.
+</Disclaimer>
+
+## FAQ
+
+### Should we keep screenshots after takedown?
+Yes. Retention supports trend analysis, recurrence tracking, and internal audit needs.
+
+### Are browser exports enough?
+Not always. Combine screenshots, URL logs, and submission records for completeness.
+
+### Do timestamps need timezone normalization?
+Yes. Standardize to UTC to avoid cross-team confusion.

@@ -1,0 +1,62 @@
+﻿---
+title: "Evidence Checklist for Counterfeit Takedowns (Practical)"
+date: "2026-01-20"
+author: "Shieldify IP Operations"
+tags: ["Counterfeit", "Evidence", "Marketplace"]
+excerpt: "A compact checklist for collecting evidence that supports stronger counterfeit takedown submissions."
+coverImage: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80"
+---
+
+Counterfeit takedowns often fail due to incomplete evidence packaging, not because the claim lacks merit.
+
+<EvidenceChecklist items={[
+  "Capture full listing URL and seller profile URL",
+  "Record visible pricing and product images",
+  "Save timestamped screenshots with page context",
+  "Link claim to trademark or product authenticity references",
+  "Track previous reports for recurring sellers"
+]} />
+
+## Build a repeatable evidence folder
+
+Use a predictable folder structure so operations, compliance, and legal teams can review quickly.
+
+```json
+{
+  "caseId": "CF-2026-041",
+  "folders": [
+    "01-urls",
+    "02-screenshots",
+    "03-ownership-references",
+    "04-submission-records"
+  ],
+  "namingPattern": "{date}_{platform}_{seller}_{type}"
+}
+```
+
+## Separate facts from assumptions
+
+Only include observable facts in the evidence package. If authenticity is inferred, label it as a risk signal and not a final conclusion.
+
+<Callout type="success" title="Operational standard">
+High-quality evidence should allow another reviewer to reproduce your findings without extra context.
+</Callout>
+
+## Maintain chain of updates
+
+When cases evolve, append new entries rather than overwriting prior records. This preserves audit clarity.
+
+<Disclaimer>
+Enforcement outcomes always depend on platform review policies and case context.
+</Disclaimer>
+
+## FAQ
+
+### Can one screenshot be enough?
+Usually no. Use multiple captures showing URL, account identity, product detail, and claim context.
+
+### Should we include customer complaints?
+Yes, if available and relevant, but keep personal data handling compliant.
+
+### Do we need legal language in every report?
+Not always. Clear operational claims with strong evidence are often more effective at first submission.
